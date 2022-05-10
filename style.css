@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+::before,
+::after,
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    min-height: 100vh;
+    background-color: hsl(185, 41%, 84%);
+    font-family: 'Space Mono', monospace;
+    color: hsl(184, 14%, 56%);
+}
+
+/* header section */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+header > img {
+    display: block;
+    width: 80vw;
+    max-height: 300px;
+    object-fit: contain;
+}
+header .container {
+    position: relative;
+    display: flex;
+}
+header .container > img {
+    display: block;
+    width: 80px;
+    object-fit: contain;
+    margin-left: 40px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    animation: bounce 1.5s ease-in-out infinite;
+}
+header h2 {
+    margin: auto auto;
+    cursor: default;
+}
+header .pokemons {
+    position: relative;
+    padding: 20px;
+    display: flex;
+    overflow-x: auto;
+    height: 80px;
+    min-width: 400px;
+    max-width: 400px;
+    border-radius: 15px;
+    padding: 0 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+header .pokemons img {
+    display: block;
+    margin: 0 5px;
+    object-fit: contain;
+    width: 50px;
+}
+
+/* memory gameboard section */
+.memory-gameboard {
+    display: grid;
+    justify-content: center;
+    margin: 60px 0;
+    grid-template-columns: repeat(4, 150px);
+    gap: 10px;
+    perspective: 1000px;
+}
+.memory-gameboard .memory-card {
+    position: relative;
+    display: grid;
+    place-items: center;
+    background-color: hsl(185, 42%, 78%);
+    border: 5px solid white;
+    height: 150px;
+    border-radius: 15px;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.memory-card.flip {
+    transform: rotateY(180deg);
+}
+.memory-gameboard .memory-card:active {
+    transform: scale(0.97);
+    transition: all 0.3s ease;
+}
+.memory-gameboard .memory-card .front,
+.memory-gameboard .memory-card .back {
+    position: absolute;
+    width: 100px;
+    backface-visibility: hidden;
+}
+.memory-gameboard .memory-card .front {
+    transform: rotateY(180deg);
+}
+.memory-gameboard .memory-card.hidden {
+    visibility: hidden;
+}
+.memory-gameboard .game-stats {
+    position: absolute;
+    top: 50px;
+    justify-self: center;
+    text-align: center;
+    border: 5px solid white;
+    border-radius: 15px;
+    padding: 20px;
+}
+.memory-gameboard .game-stats h2 {
+    text-decoration: underline white 2px;
+}
+
+/* mobile layout */
+@media screen and (max-width: 650px) {
+    .memory-gameboard {
+        grid-template-columns: repeat(3, 100px);
+        margin: 15px 0;
+    }
+    .memory-gameboard .memory-card {
+        height: 100px;
+    }
+    .memory-gameboard .memory-card .front,
+    .memory-gameboard .memory-card .back {
+        width: 80px;
+    }
+    header .container {
+        flex-direction: column;
+    }
+    header > img {
+        display: block;
+        width: 80vw;
+        max-height: 100px;
+        object-fit: contain;
+    }
+    header .pokemons {
+        background-color: hsl(186, 74%, 87%);
+        min-width: auto;
+        max-width: 300px;
+    }
+    header .container > img {
+        margin: 15px auto;
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
