@@ -1,4 +1,4 @@
-# [Pokemon Memory Game](https://marcin-depcik.github.io/memory-game/)
+# [Pokemon Memory Game](https://marcin-depcik.github.io/pokemon-memory-game/)
 
 ## Table of contents
 
